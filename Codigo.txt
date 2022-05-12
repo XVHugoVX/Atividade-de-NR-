@@ -1,0 +1,39 @@
+int pinoG = 12;
+int pinoY = 13;
+int pinoR = 8;
+int pinoPot = A5;
+int valorPot = 0;
+
+void setup(){
+  pinMode(pinoR, OUTPUT);
+  pinMode(pinoY, OUTPUT);
+  pinMode(pinoG, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  valorPot = analogRead(pinoPot);
+  if(valorPot == 0){
+  digitalWrite(pinoG, LOW);
+  delay(valorPot);
+  digitalWrite(pinoY, LOW);
+  delay(valorPot);
+  digitalWrite(pinoR, LOW);
+  delay(valorPot);
+  }
+  else if(valorPot < 340){
+  digitalWrite(pinoR, HIGH);
+    delay(valorPot);
+  }
+  else if(valorPot < 680){
+  digitalWrite(pinoY, HIGH);
+  digitalWrite(pinoR, LOW);
+    delay(valorPot);
+  }
+  else if(valorPot < 1020){
+  digitalWrite(pinoG, HIGH);
+  digitalWrite(pinoY, LOW);
+    delay(valorPot); 
+  }
+  Serial.println(valorPot);
+}
